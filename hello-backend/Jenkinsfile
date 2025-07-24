@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/your-username/hello_fullstack.git'
+            }
+        }
+        stage('Build & Deploy') {
+            steps {
+                sh 'docker-compose down'
+                sh 'docker-compose up --build -d'
+            }
+        }
+    }
+}
